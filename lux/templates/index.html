@@ -1,0 +1,275 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUX Heroine Moment</title>
+{% csrf_token %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div id="lux-root">
+
+  <div id="loadingOverlay">
+    <div class="loading-lux">LUX</div>
+    <div class="loading-text">AI Magic in Progress</div>
+    <div class="loading-dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+
+  <!-- PAGE 1: Brand Landing -->
+  <div id="page1" class="page active">
+    <svg class="floral-tl" viewBox="0 0 120 120" fill="none">
+      <circle cx="30" cy="30" r="18" fill="#f48fb1" opacity="0.6"/>
+      <circle cx="60" cy="15" r="12" fill="#ce93d8" opacity="0.5"/>
+      <circle cx="15" cy="65" r="10" fill="#f48fb1" opacity="0.4"/>
+      <circle cx="75" cy="40" r="8" fill="#f8bbd0" opacity="0.7"/>
+      <path d="M30 30 Q45 5 60 15" stroke="#e91e63" stroke-width="1" fill="none" opacity="0.4"/>
+      <path d="M15 65 Q0 45 15 30" stroke="#ab47bc" stroke-width="1" fill="none" opacity="0.3"/>
+    </svg>
+
+    <div class="p1-top-bar">
+      <div>
+        <div class="lux-logo">
+          <img src="{% static 'assets/Lux-Logo.png' %}" style="width:100%; height:50px; object-fit:cover;" />
+        </div>
+      </div>
+    
+    </div>
+
+    <div class="p1-hero">
+      <div class="p1-headline">
+        <div class="introducing">Introducing — New Variants</div>
+        <h1>Your <em>Heroine</em><br>Moment Begins</h1>
+        <div class="sub">Beauty · Confidence · Radiance</div>
+      </div>
+
+      <div class="soaps-row">
+        <div class="soap-card">
+          <div class="new-badge">NEW</div>
+          <!-- <div class="soap-box pink">
+            <div class="soap-label-top">International</div>
+            <div class="soap-lux">LUX</div>
+            <div class="soap-variant">Bouncy &amp; Bright</div>
+            <div class="soap-ingredients">Cherry Blossom &amp; Glycerin</div>
+          </div> -->
+          <img src="{% static 'assets/cherry_blossom.png' %}" style="width:100%; height:100%; object-fit:cover;" />
+          <div class="glutathione-tag">✦ Glutathione</div>
+          <div class="soap-name">Bouncy &amp; Bright</div>
+          <div class="soap-desc">Cherry Blossom · Glycerin<br>Radiant Glow Formula</div>
+        </div>
+
+        <div class="p1-duo-divider" style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding-bottom:20px; gap:4px;">
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:11px; color:#9c6d2e; opacity:0.7;">×</div>
+          <div style="width:1px; height:30px; background:rgba(194,24,91,0.2);"></div>
+          <div style="font-size:8px; color:#c2185b; letter-spacing:1px; text-transform:uppercase;">Meet the<br>New Duo</div>
+          <div style="width:1px; height:30px; background:rgba(194,24,91,0.2);"></div>
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:11px; color:#9c6d2e; opacity:0.7;">×</div>
+        </div>
+
+        <div class="soap-card">
+          <!-- <div class="soap-box blue">
+            <div class="soap-label-top" style="color:#1565c0;">International</div>
+            <div class="soap-lux">LUX</div>
+            <div class="soap-variant blue-text">Smooth &amp; Radiant</div>
+            <div class="soap-ingredients blue-text">White Rose &amp; French Moisturiser</div>
+          </div> -->
+          <img src="{% static 'assets/white_rose.png' %}" style="width:100%; height:100%; object-fit:cover;" />
+
+          <div class="glutathione-tag" style="color:#1565c0;">✦ Glutathione</div>
+          <div class="soap-name" style="color:#1565c0;">Smooth &amp; Radiant</div>
+          <div class="soap-desc" style="color:#5e7b9e;">White Rose · French Moisturiser<br>Silky Smooth Formula</div>
+        </div>
+      </div>
+
+      <div class="p1-benefits">
+        <div class="benefit-pill">✦ Pro-Beauty Complex</div>
+        <div class="benefit-pill">✦ Glutathione Enriched</div>
+        <div class="benefit-pill">✦ Star-Worthy Glow</div>
+      </div>
+
+      <div class="p1-quote">"Elegance is not about being noticed — it's about being remembered."</div>
+
+      <button class="btn-start" onclick="goToPage(2)">Begin Your Heroine Moment</button>
+
+      <div class="p1-bottom-tagline">Beauty · Confidence · You</div>
+    </div>
+
+    <svg class="floral-br" viewBox="0 0 120 120" fill="none">
+      <circle cx="30" cy="30" r="18" fill="#90caf9" opacity="0.5"/>
+      <circle cx="60" cy="15" r="12" fill="#ce93d8" opacity="0.4"/>
+      <circle cx="15" cy="65" r="10" fill="#f48fb1" opacity="0.4"/>
+      <circle cx="75" cy="40" r="8" fill="#b3e5fc" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <!-- PAGE 2: Upload -->
+  <div id="page2" class="page">
+    <div class="p2-header">
+      <div>
+        <div class="lux-logo">
+            <img src="{% static 'assets/Lux-Logo.png' %}" style="width:100%; height:50px; object-fit:cover;" />
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div class="steps-row" style="justify-content:flex-end;">
+          <div class="step-item">
+            <div class="step-circle active" id="sc1">1</div>
+            <div class="step-name">Upload</div>
+          </div>
+          <div class="step-line" id="sl1"></div>
+          <div class="step-item">
+            <div class="step-circle" id="sc2">
+              <i class="ti ti-sparkles" style="font-size:12px;"></i>
+            </div>
+            <div class="step-name">AI Magic</div>
+          </div>
+          <div class="step-line" id="sl2"></div>
+          <div class="step-item">
+            <div class="step-circle" id="sc3">
+              <i class="ti ti-crown" style="font-size:12px;"></i>
+            </div>
+            <div class="step-name">Your Moment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p2-body">
+      <div class="p2-title">Your <em>Heroine</em><br>Moment</div>
+      <div class="p2-subtitle">Step in · Shine out · AI transforms you</div>
+
+      <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+        <img id="preview" alt="Your photo preview"/>
+        <i class="ti ti-camera upload-icon" id="uploadIcon"></i>
+        <div class="upload-text" id="uploadText">Tap to upload<br>your photo</div>
+        <div class="upload-hint" id="uploadHint">Choose a clear, front-facing photo</div>
+      </div>
+
+      <input type="file" id="fileInput" accept="image/*" onchange="handleUpload(event)"/>
+
+      <div class="p2-looks-section">
+        <div class="p2-looks-title">Choose Your Look</div>
+        <div class="p2-looks-grid">
+          <div class="look-card" id="look1" onclick="selectLook('target_image1')">
+            <img src="{% static 'assets/target_image1.png' %}" alt="Look 1"/>
+            <div class="look-label">Look 1</div>
+            <div class="look-check"><i class="ti ti-check" style="font-size:16px;"></i></div>
+          </div>
+          <div class="look-card" id="look2" onclick="selectLook('target_image2')">
+            <img src="{% static 'assets/target_image2.png' %}" alt="Look 2"/>
+            <div class="look-label">Look 2</div>
+            <div class="look-check"><i class="ti ti-check" style="font-size:16px;"></i></div>
+          </div>
+          <div class="look-card" id="look3" onclick="selectLook('target_image3')">
+            <img src="{% static 'assets/target_image3.png' %}" alt="Look 3"/>
+            <div class="look-label">Look 3</div>
+            <div class="look-check"><i class="ti ti-check" style="font-size:16px;"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-transform" id="btnTransform" onclick="doTransform()">
+        <i class="ti ti-sparkles" style="font-size:13px;"></i>&nbsp; Create My Heroine Moment
+      </button>
+
+      <div class="p2-promise">✦ Your photo is only used to create your moment &nbsp;·&nbsp; Not stored</div>
+    </div>
+  </div>
+
+  <!-- PAGE 3: Result -->
+  <div id="page3" class="page">
+    <div class="p3-header">
+      <div>
+        <div class="p2-lux">LUX</div>
+      </div>
+      <div class="p3-completion-badge">✦ AI Transformation Complete ✦</div>
+    </div>
+
+    <div class="p3-body">
+      <div class="p3-frame-wrap">
+        <div class="p3-frame">
+          <img id="resultImg" alt="Your heroine moment" style="display:none;"/>
+          <div id="p3PlaceholderFrame" class="p3-placeholder">
+            <div style="position:relative; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+              <svg style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0.3;" viewBox="0 0 260 200">
+                <circle cx="40" cy="40" r="25" fill="#f48fb1"/>
+                <circle cx="220" cy="30" r="20" fill="#ce93d8"/>
+                <circle cx="30" cy="160" r="18" fill="#90caf9"/>
+                <circle cx="230" cy="170" r="22" fill="#f48fb1"/>
+                <circle cx="130" cy="15" r="14" fill="#f8bbd0"/>
+                <circle cx="130" cy="185" r="14" fill="#b3e5fc"/>
+              </svg>
+              <i class="ti ti-crown" style="font-size:42px; color:#c2185b; opacity:0.5; position:relative; z-index:1;"></i>
+              <div class="p3-placeholder-text" style="position:relative; z-index:1;">Your photo will appear here<br>transformed into your<br>Heroine Moment</div>
+            </div>
+          </div>
+          <div class="p3-frame-overlay"></div>
+          <div class="p3-frame-label">Your Heroine Moment ✨</div>
+        </div>
+
+        <div class="p3-action-bar">
+          <button class="btn-action btn-download" onclick="downloadImage()">
+            <i class="ti ti-download" style="font-size:11px;"></i> Download
+          </button>
+          <button class="btn-action btn-share">
+            <i class="ti ti-share" style="font-size:11px;"></i> Share
+          </button>
+          <button class="btn-action btn-again" onclick="goToPage(2)">
+            <i class="ti ti-refresh" style="font-size:11px;"></i> Try Again
+          </button>
+        </div>
+      </div>
+
+      <div class="p3-right">
+        <div class="heroine-title">You, as the</div>
+        <div class="heroine-main"><span class="heroine-crown">👑</span> Main<br>Character</div>
+        <div class="heroine-sub">of your story.</div>
+
+        <div class="p3-quote-box">
+          <div class="p3-quote-text">"Elegance is not about being noticed, it's about being remembered."</div>
+        </div>
+
+        <div style="font-size:9px; color:#7b5e7b; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; font-weight:500;">Powered by</div>
+        <div class="p3-product-row">
+          <div class="p3-mini-soap pink">LUX</div>
+          <div style="display:flex; flex-direction:column; justify-content:center;">
+            <div style="font-size:8px; font-weight:600; color:#c2185b;">Bouncy &amp; Bright</div>
+            <div style="font-size:7px; color:#a899a8;">Cherry Blossom</div>
+          </div>
+        </div>
+        <div class="p3-product-row">
+          <div class="p3-mini-soap blue">LUX</div>
+          <div style="display:flex; flex-direction:column; justify-content:center;">
+            <div style="font-size:8px; font-weight:600; color:#1565c0;">Smooth &amp; Radiant</div>
+            <div style="font-size:7px; color:#a899a8;">White Rose</div>
+          </div>
+        </div>
+
+        <div style="margin-top:8px; padding:8px 10px; background:rgba(255,255,255,0.55); border-radius:8px; border:1px solid rgba(194,24,91,0.15);">
+          <div style="font-size:8px; color:#9c6d2e; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:3px;">✦ AI Heroine Experience</div>
+          <div style="font-size:8px; color:#7b5e7b; line-height:1.6;">Step in. Shine out.<br>AI transforms you into<br>your most radiant self.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p3-bottom-strip">
+      <span class="bottom-word">Beauty</span>
+      <span class="bottom-dot">✦</span>
+      <span class="bottom-word">Confidence</span>
+      <span class="bottom-dot">✦</span>
+      <span class="bottom-word">You</span>
+    </div>
+  </div>
+
+</div>
+
+<script src={% static 'js/index.js' %} ></script>
+</body> 
+</html>

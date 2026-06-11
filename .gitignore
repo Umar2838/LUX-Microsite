@@ -1,0 +1,6 @@
+# Model files
+*.onnx
+*.pkl
+*.pth
+*.h5
+*.pb
