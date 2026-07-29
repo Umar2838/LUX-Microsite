@@ -10,10 +10,20 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+try:
+    from dotenv import load_dotenv
+    # Load .env file from project root (works with both dev and production)
+    env_file = BASE_DIR / '.env'
+    if env_file.exists():
+        load_dotenv(str(env_file))
+except ImportError:
+    pass
 
 
 # Quick-start development settings - unsuitable for production
@@ -125,5 +135,17 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+VMODEL_API_TOKEN = os.environ.get('VMODEL_API_TOKEN', '')
+VMODEL_VERSION = os.environ.get(
+    'VMODEL_VERSION',
+    '537e83f7ed84751dc56aa80fb2391b07696c85a49967c72c64f002a0ca2bb224',
+)
+VMODEL_TARGET_VIDEO = 'target_vedio.mp4'
+VMODEL_TARGET_VIDEO_URL = os.environ.get('VMODEL_TARGET_VIDEO_URL', '')
+
 # Default primary key field type
 

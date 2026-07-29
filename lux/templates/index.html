@@ -14,13 +14,17 @@
 <div id="lux-root">
 
   <div id="loadingOverlay">
-    <div class="loading-lux">LUX</div>
-    <div class="loading-text">AI Magic in Progress</div>
-    <div class="loading-dots">
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
+    <div class="loading-ring-wrap countdown" id="loadingRingWrap">
+      <svg class="loading-ring" viewBox="0 0 120 120" aria-hidden="true">
+        <circle class="loading-ring-track" cx="60" cy="60" r="52"></circle>
+        <circle class="loading-ring-progress" id="loadingRingProgress" cx="60" cy="60" r="52"></circle>
+      </svg>
+      <div class="loading-ring-center">
+        <span id="loadingTimer">2:00</span>
+      </div>
     </div>
+    <div class="loading-lux">LUX</div>
+    <div class="loading-text" id="loadingText">AI Magic in Progress</div>
   </div>
 
   <!-- PAGE 1: Brand Landing -->
@@ -46,7 +50,7 @@
     <div class="p1-hero">
       <div class="p1-headline">
         <div class="introducing">Introducing — New Variants</div>
-        <h1>Your <em>Heroine</em><br>Moment Begins</h1>
+        <h1>Your <em>LUX</em><br>Glow Moment Begins</h1>
         <div class="sub">Beauty · Confidence · Radiance</div>
       </div>
 
@@ -66,11 +70,11 @@
         </div>
 
         <div class="p1-duo-divider" style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding-bottom:20px; gap:4px;">
-          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:11px; color:#9c6d2e; opacity:0.7;">×</div>
-          <div style="width:1px; height:30px; background:rgba(194,24,91,0.2);"></div>
-          <div style="font-size:8px; color:#c2185b; letter-spacing:1px; text-transform:uppercase;">Meet the<br>New Duo</div>
-          <div style="width:1px; height:30px; background:rgba(194,24,91,0.2);"></div>
-          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:11px; color:#9c6d2e; opacity:0.7;">×</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:14px; color:#9c6d2e; opacity:0.7;">×</div>
+          <div style="width:2px; height:30px; background:rgba(194,24,91,0.2);"></div>
+          <div style="font-size:10px; color:#c2185b; letter-spacing:1px; text-transform:uppercase;">Meet the<br>New Duo</div>
+          <div style="width:2px; height:30px; background:rgba(194,24,91,0.2);"></div>
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:14px; color:#9c6d2e; opacity:0.7;">×</div>
         </div>
 
         <div class="soap-card">
@@ -96,7 +100,7 @@
 
       <div class="p1-quote">"Elegance is not about being noticed — it's about being remembered."</div>
 
-      <button class="btn-start" onclick="goToPage(2)">Begin Your Heroine Moment</button>
+      <button class="btn-start" onclick="goToPage(2)">Begin Your LUX Glow Moment</button>
 
       <div class="p1-bottom-tagline">Beauty · Confidence · You</div>
     </div>
@@ -142,7 +146,7 @@
     </div>
 
     <div class="p2-body">
-      <div class="p2-title">Your <em>Heroine</em><br>Moment</div>
+      <div class="p2-title">Your <em>LUX</em><br>Glowing Moment</div>
       <div class="p2-subtitle">Step in · Shine out · AI transforms you</div>
 
       <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
@@ -176,7 +180,7 @@
       </div>
 
       <button class="btn-transform" id="btnTransform" onclick="doTransform()">
-        <i class="ti ti-sparkles" style="font-size:13px;"></i>&nbsp; Create My Heroine Moment
+        <i class="ti ti-sparkles" style="font-size:13px;"></i>&nbsp; Create My LUX Glowing Moment
       </button>
 
       <div class="p2-promise">✦ Your photo is only used to create your moment &nbsp;·&nbsp; Not stored</div>
@@ -194,33 +198,42 @@
 
     <div class="p3-body">
       <div class="p3-frame-wrap">
-        <div class="p3-frame">
-          <img id="resultImg" alt="Your heroine moment" style="display:none;"/>
-          <div id="p3PlaceholderFrame" class="p3-placeholder">
-            <div style="position:relative; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-              <svg style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0.3;" viewBox="0 0 260 200">
-                <circle cx="40" cy="40" r="25" fill="#f48fb1"/>
-                <circle cx="220" cy="30" r="20" fill="#ce93d8"/>
-                <circle cx="30" cy="160" r="18" fill="#90caf9"/>
-                <circle cx="230" cy="170" r="22" fill="#f48fb1"/>
-                <circle cx="130" cy="15" r="14" fill="#f8bbd0"/>
-                <circle cx="130" cy="185" r="14" fill="#b3e5fc"/>
-              </svg>
-              <i class="ti ti-crown" style="font-size:42px; color:#c2185b; opacity:0.5; position:relative; z-index:1;"></i>
-              <div class="p3-placeholder-text" style="position:relative; z-index:1;">Your photo will appear here<br>transformed into your<br>Heroine Moment</div>
+        <div class="p3-results-row" id="p3ResultsRow">
+          <div class="p3-frame" id="photoFrame">
+            <img id="resultImg" alt="Your heroine moment" style="display:none;"/>
+            <div id="p3PlaceholderFrame" class="p3-placeholder">
+              <div style="position:relative; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                <svg style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0.3;" viewBox="0 0 260 200">
+                  <circle cx="40" cy="40" r="25" fill="#f48fb1"/>
+                  <circle cx="220" cy="30" r="20" fill="#ce93d8"/>
+                  <circle cx="30" cy="160" r="18" fill="#90caf9"/>
+                  <circle cx="230" cy="170" r="22" fill="#f48fb1"/>
+                  <circle cx="130" cy="15" r="14" fill="#f8bbd0"/>
+                  <circle cx="130" cy="185" r="14" fill="#b3e5fc"/>
+                </svg>
+                <i class="ti ti-crown" style="font-size:42px; color:#c2185b; opacity:0.5; position:relative; z-index:1;"></i>
+                <div class="p3-placeholder-text" style="position:relative; z-index:1;">Your photo will appear here<br>transformed into your<br>Heroine Moment</div>
+              </div>
             </div>
+            <div class="p3-frame-overlay"></div>
           </div>
-          <div class="p3-frame-overlay"></div>
-          <div class="p3-frame-label">Your Heroine Moment ✨</div>
+
+          <div class="p3-frame p3-video-frame" id="videoFrame" style="display:none;">
+            <video id="resultVideo" controls playsinline></video>
+            <div class="p3-frame-overlay"></div>
+          </div>
         </div>
 
-        <div class="p3-action-bar">
+        <div class="p3-video-error" id="videoError" style="display:none;"></div>
+
+        <div class="p3-action-bar" id="p3ActionBar" style="display:none;">
           <button class="btn-action btn-download" onclick="downloadImage()">
-            <i class="ti ti-download" style="font-size:11px;"></i> Download
+            <i class="ti ti-download" style="font-size:11px;"></i> Download Photo
           </button>
-          <button class="btn-action btn-share">
-            <i class="ti ti-share" style="font-size:11px;"></i> Share
+          <button class="btn-action btn-download" id="btnDownloadVideo" onclick="downloadVideo()" style="display:none;">
+            <i class="ti ti-download" style="font-size:11px;"></i> Download Video
           </button>
+     
           <button class="btn-action btn-again" onclick="goToPage(2)">
             <i class="ti ti-refresh" style="font-size:11px;"></i> Try Again
           </button>
@@ -259,13 +272,6 @@
       </div>
     </div>
 
-    <div class="p3-bottom-strip">
-      <span class="bottom-word">Beauty</span>
-      <span class="bottom-dot">✦</span>
-      <span class="bottom-word">Confidence</span>
-      <span class="bottom-dot">✦</span>
-      <span class="bottom-word">You</span>
-    </div>
   </div>
 
 </div>
